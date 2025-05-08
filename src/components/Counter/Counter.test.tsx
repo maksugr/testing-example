@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import { Counter } from ".";
@@ -63,6 +63,21 @@ describe("Counter component", () => {
 
         const countValue = screen.getByTestId("count-value");
         expect(countValue.textContent).toBe("0");
+    });
+
+    it("calls onChange with updated count", () => {
+        const handleChange = vi.fn();
+
+        render(<Counter initialCount={2} onChange={handleChange} />);
+        const incrementButton = screen.getByText("Increment");
+
+        fireEvent.click(incrementButton);
+        fireEvent.click(incrementButton);
+
+        expect(handleChange).toHaveBeenCalledTimes(3);
+        expect(handleChange).toHaveBeenNthCalledWith(1, 2);
+        expect(handleChange).toHaveBeenNthCalledWith(2, 3);
+        expect(handleChange).toHaveBeenNthCalledWith(3, 4);
     });
 });
 

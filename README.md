@@ -1,1 +1,1 @@
-# Testing example
+# ReDI Munich: Testing example
