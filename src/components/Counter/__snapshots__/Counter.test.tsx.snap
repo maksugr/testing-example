@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Counter component snapshot > matches snapshot with initialCount 1`] = `
+<div>
+  <div
+    data-testid="counter"
+  >
+    <h2>
+      Counter: 
+      <span
+        data-testid="count-value"
+      >
+        42
+      </span>
+    </h2>
+    <div
+      style="display: flex; gap: 12px;"
+    >
+      <button
+        data-testid="button"
+      >
+        Increment
+      </button>
+      <button
+        data-testid="button"
+      >
+        Decrement
+      </button>
+      <button
+        data-testid="button"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+</div>
+`;

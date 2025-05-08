@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 
 import { Counter } from ".";
 
-describe("Counter Component", () => {
+describe("Counter component", () => {
     it("renders with initial count of 0 by default", () => {
         render(<Counter />);
 
@@ -52,5 +52,23 @@ describe("Counter Component", () => {
         fireEvent.click(resetButton);
 
         expect(countValue.textContent).toBe("5");
+    });
+
+    it("does not decrement below zero", () => {
+        render(<Counter initialCount={0} />);
+        const decrementButton = screen.getByText("Decrement");
+
+        fireEvent.click(decrementButton);
+        fireEvent.click(decrementButton);
+
+        const countValue = screen.getByTestId("count-value");
+        expect(countValue.textContent).toBe("0");
+    });
+});
+
+describe("Counter component snapshot", () => {
+    it("matches snapshot with initialCount", () => {
+        const { container } = render(<Counter initialCount={42} />);
+        expect(container).toMatchSnapshot();
     });
 });

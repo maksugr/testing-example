@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 
 import { Button } from ".";
 
-describe("Button Component", () => {
+describe("Button component", () => {
     it("renders with the correct label", () => {
         const onClick = vi.fn();
         render(<Button label="Click Me" onClick={onClick} />);
@@ -31,5 +31,21 @@ describe("Button Component", () => {
 
         fireEvent.click(button);
         expect(onClick).not.toHaveBeenCalled();
+    });
+});
+
+describe("Button component snapshot", () => {
+    it("matches default snapshot", () => {
+        const { container } = render(
+            <Button label="Click me" onClick={() => {}} />
+        );
+        expect(container).toMatchSnapshot();
+    });
+
+    it("matches disabled snapshot", () => {
+        const { container } = render(
+            <Button label="Can't click" onClick={() => {}} disabled />
+        );
+        expect(container).toMatchSnapshot();
     });
 });

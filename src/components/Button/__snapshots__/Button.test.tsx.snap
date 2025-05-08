@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button component snapshot > matches default snapshot 1`] = `
+<div>
+  <button
+    data-testid="button"
+  >
+    Click me
+  </button>
+</div>
+`;
+
+exports[`Button component snapshot > matches disabled snapshot 1`] = `
+<div>
+  <button
+    data-testid="button"
+    disabled=""
+  >
+    Can't click
+  </button>
+</div>
+`;
